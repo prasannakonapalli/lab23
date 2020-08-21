@@ -48,6 +48,9 @@ public class GradeController {
 	
 	@PostMapping("/grades/addConfirmation")
 	public String submitAdd( Grade grade) {	
+		double percent=0;
+		percent=(grade.getScore()/grade.getTotal());
+		grade.setPercentage(percent);
 		dao.create(grade);
 //		model.addAttribute("name", grade.getName());
 //		model.addAttribute("type", grade.getType());
@@ -76,7 +79,13 @@ public class GradeController {
 		return "redirect:/grades";
 	}
 	
-	
+	@RequestMapping("/grades/deleteConfirmation")
+	public String deleteConfirmation(@RequestParam("id") Long id, Model model) {
+
+		Grade grade = dao.findById(id);
+		model.addAttribute("grade", grade);
+		return "deleteConfirmation";
+	}
 
 
 }

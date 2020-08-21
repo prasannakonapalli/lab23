@@ -33,7 +33,10 @@
 				<th scope="row">Total</th>
 				<td><c:out value="${grade.total}" /></td>
 			</tr>
-			
+			<tr>
+				<th scope="row">Score</th>
+				<td><fmt:formatNumber type="percent" value="${grade.percentage}"   minFractionDigits = "1"/></td>  
+			</tr>
 		</table>
 		
 				

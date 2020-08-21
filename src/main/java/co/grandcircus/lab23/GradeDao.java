@@ -30,10 +30,10 @@ public class GradeDao {
 		return jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(Grade.class), id);
 	}
 	public void create(Grade grade) {
-		String sql = "INSERT INTO grade(name, type, score,total) VALUES (?, ?, ?,?)";
+		String sql = "INSERT INTO grade(name, type, score,total,percentage) VALUES (?, ?, ?,?,?)";
 		// .update is used for any modification (INSERT, UPDATE, DELETE)
 		// the value(s) for ? params are specified at the end...
-		jdbc.update(sql, grade.getName(), grade.getType(), grade.getScore(),grade.getTotal());
+		jdbc.update(sql, grade.getName(), grade.getType(), grade.getScore(),grade.getTotal(),grade.getPercentage());
 	}
 	public void delete(Long id) {
 		String sql = "DELETE FROM grade WHERE id = ?";
